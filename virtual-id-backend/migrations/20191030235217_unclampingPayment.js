@@ -5,7 +5,7 @@ exports.up = function(knex) {
       .timestamp("created_at")
       .notNull()
       .defaultTo(knex.raw("now()"));
-    table.string("licenseDirectory").notNull();
+    table.string("filename").notNull();
     table.string("plateNumber").notNull();
     table.number("latitude").notNull();
     table.number("longitude").notNull();

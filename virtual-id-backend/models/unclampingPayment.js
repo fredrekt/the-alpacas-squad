@@ -1,6 +1,7 @@
+const bookshelf = require("../bookshelf");
 
-const bookshelf = require('../bookshelf')
+const UnclampingPayment = bookshelf.model("UnclampingPayment", {
+  tableName: "unclampingPayment"
+});
 
-const UnclampingPayment = bookshelf.model({
-    tableName: 'unclampingPayment'
-})
+module.exports = UnclampingPayment;
