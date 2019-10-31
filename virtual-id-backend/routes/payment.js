@@ -17,7 +17,7 @@ const payments = io => {
     const latitude = req.body.latitude;
     const plateNumber = req.body.plateNumber;
     const paymentId = req.body.paymentId;
-    const paymentStatus = req.body.status;
+    const paymentStatus = req.body.paymentStatus;
     const unclampingStatus = "RUNNING";
     const { filename } = req.file;
 
