@@ -3,8 +3,8 @@ const UnclampingPayment = require("../models/unclampingPayment");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "/licenses/"),
-  filename: (req, file, cb) => cb(null, `${file.filename}-${Date.now()}`)
+  destination: (req, file, cb) => cb(null, "licenses/"),
+  filename: (req, file, cb) => cb(null, `${file.originalname}`)
 });
 
 const upload = multer({ storage });
@@ -17,7 +17,7 @@ const payments = io => {
     const latitude = req.body.latitude;
     const plateNumber = req.body.plateNumber;
     const paymentId = req.body.paymentId;
-    const status = req.body.status;
+    const paymentStatus = req.body.status;
     const unclampingStatus = "RUNNING";
     const { filename } = req.file;
 
@@ -27,14 +27,17 @@ const payments = io => {
       latitude,
       longitude,
       paymentId,
-      paymentStatus: status,
+      paymentStatus,
       unclampingStatus
     });
+    console.table(model);
 
+    /*
     model
       .save()
       .then(model => io.emit("eta/running", ""))
-      .then(() => res.status(201).json({}));
+      .then(() => res.status(201).json({}));*/
+    res.status(201).json({});
   });
 
   return router;

@@ -1,7 +1,6 @@
 const paymentRoutes = require("./routes/payment");
 const paymentSocket = require("./sockets/paymentSocket");
 const express = require("express");
-const bodyParser = require("body-parser");
 const Server = require("socket.io");
 
 const app = express();
@@ -12,7 +11,6 @@ io.on("connection", socket => {
   paymentSocket(socket, io);
 });
 
-app.use(bodyParser);
 app.use("/api", paymentRoutes(io));
 
 module.exports = { app, io };
