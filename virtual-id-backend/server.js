@@ -1,5 +1,6 @@
-const app = require("./app");
+const { app, io } = require("./app");
 const http = require("http").Server(app);
+io.attach(http);
 
 const port = 8010;
 

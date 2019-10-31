@@ -18,6 +18,7 @@ const payments = io => {
     const plateNumber = req.body.plateNumber;
     const paymentId = req.body.paymentId;
     const status = req.body.status;
+    const unclampingStatus = "RUNNING";
     const { filename } = req.file;
 
     const model = new UnclampingPayment({
@@ -26,11 +27,13 @@ const payments = io => {
       latitude,
       longitude,
       paymentId,
-      status
-    });
+      paymentStatus: status,
+      unclampingStatus
+    })
 
-    // Broadcast to /eta/pending
+    await model.save();
 
+    io.emit("/eta/running", "");
 
     return res.status(201);
   });

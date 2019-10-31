@@ -10,7 +10,8 @@ exports.up = function(knex) {
     table.number("latitude").notNull();
     table.number("longitude").notNull();
     table.string("paymentId").notNull();
-    table.string("status").notNull();
+    table.string("paymentStatus").notNull();
+    table.string("unclampingStatus").notNull();
   });
 };
 
