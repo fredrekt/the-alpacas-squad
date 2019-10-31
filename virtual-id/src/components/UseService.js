@@ -4,29 +4,40 @@ import { MDBContainer, MDBJumbotron, MDBAnimation,
             MDBIcon
 } from 'mdbreact'
 import Breadcr from './Breadcr'
+import Geolocation from "react-geolocation";
 
 //bs stepper
 import 'bs-stepper/dist/css/bs-stepper.min.css';
 import Stepper from 'bs-stepper'
-import Geolocation from './GeoLocation';
+//import Geolocation from './GeoLocation';
 import PayPalButton from './PayPaylButton'
 
 class UseService extends Component{
     constructor(props){
         super(props)
         this.state = {
-            user: {
-                long: '',
-                lat: '',
-                plate:''
-
-            },
+            long: '',
+            lat: '',
+            plate:'',
             payname: 'confirm payment',
-            hidestatus: 'visible'
+            hidestatus: 'visible',
+            paymentid: '',
+            status: ''
         }
     }
     onSubmit = (event) =>{
         event.preventDefault()
+        fetch('/api/pay', {
+            method: 'POST',
+            credentials: 'include',
+            body: ` long = ${this.state.long} && 
+                    lat = ${this.state.lat} &&
+                    plate = ${this.state.plate} &&
+                    paymentid = ${this.state.paymentid} &&
+                    status = ${this.state.status}
+            `
+        })
+
             this.setState({payname: 
                 <div class="spinner-border white-text" role="status">
                     <span class="sr-only">Loading...</span>
@@ -41,6 +52,7 @@ class UseService extends Component{
           linear: false,
           animation: true
         })
+
       }
     render(){
         return(
@@ -94,8 +106,34 @@ class UseService extends Component{
                                             <h5 className="grey-text text-center">
                                                 Please press the button below to give your current location
                                             </h5>
+                                            <p>{this.state.long}</p>
+                                            <p>{this.state.lat}</p>
                                             <div className="text-center">
-                                                <Geolocation/>
+                                            <Geolocation
+                                                onSuccess={console.log}
+                                                render={({
+                                                    fetchingPosition,
+                                                    position: { coords: { latitude, longitude } = {} } = {},
+                                                    error,
+                                                    getCurrentPosition
+                                                }) =>
+                                                    <div>
+                                                    <MDBBtn
+                                                    outline
+                                                    icon="map-marked-alt"
+                                                    size="md"
+                                                    onClick={getCurrentPosition}>Get Position</MDBBtn>
+                                                    {error &&
+                                                        <div>
+                                                        {error.message}
+                                                        </div>}
+                                                    <pre>
+                                                        latitude: {latitude}
+                                                        <br/>
+                                                        longitude: {longitude}
+                                                    </pre>
+                                                    </div>}
+                                                    />
                                             </div>
                                             <br/>
                                             <button class="btn btn-primary" onClick={() => this.stepper.next()}>Next</button>
@@ -109,7 +147,7 @@ class UseService extends Component{
                                                         <MDBInput
                                                             group
                                                             style={{'width':'40%','margin-left':'31%'}}
-                                                            type="number"
+                                                            type="text"
                                                             validate
                                                             error="wrong"
                                                             success="right"
@@ -149,6 +187,7 @@ class UseService extends Component{
                                             {/* <button type="submit" class="btn btn-primary mt-5">{this.state.payname}</button> */}
                                                 <div style={{'visibility':'hidden'}}>
                                                     <PayPalButton style={{'visibility':'hidden'}}/>
+                                                    
                                                 </div>
                                         </div>
                                         </form>

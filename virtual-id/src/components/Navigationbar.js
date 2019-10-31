@@ -3,6 +3,7 @@ import { MDBBadge, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarTo
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact"
 import { Link } from 'react-router-dom'
 import '../App.css'
+import logo from '../img/logo.png'
 class Navigationbar extends React.Component {
   constructor(props) {
     super(props);
@@ -32,9 +33,15 @@ class Navigationbar extends React.Component {
             <MDBNavbar color="elegant-color" fixed="top" expand="md" scrolling dark transparent>
               <MDBNavbarBrand href="/">
                 <strong className="navbar-brand" 
-                style={{color:this.state.color}} 
+                style={{color:this.state.color, 'font-size':'12px'}} 
                 id="nav-brand">
-                CIMUR
+                <img
+                src={logo}
+                style={{'width':'5%',
+                height:'1%'
+                }}
+                />
+                Wheel Clamp Removal
                 </strong>
               </MDBNavbarBrand>
               {!this.state.isWideEnough && <MDBNavbarToggler onClick={this.onClick} />}
