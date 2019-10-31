@@ -1,22 +1,172 @@
-.App {
-  text-align: center;
+*{
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
+/*
+========= Navbar Component Starts ========
+*/
+
+.navbar-brand{
+  font-family: 'Open Sans', sans-serif;
+  font-style:bold;
+  font-weight: 500px;
+}
+/*
+========= Navbar Component Ends ========
+*/
+
+
+/*
+========= Breadcrumb Component Starts ====== 
+*/
+.breadcrumb-main{
+  /* width: 1200px; */
+  background-image:url('./img/breadc-1.jpg');
+  width: 100%; 
+  height: 250px;
+}
+.brc-content{
+  padding: 30px;
+}
+.brc-header{
+  letter-spacing: 0.1rem;
+  margin-top: 5%;
+  font-family: 'Staatliches', cursive;
+}
+/*
+========= Breadcrumb Component Ends ====== 
+*/
+
+
+/* 
+========= Application Component Starts ====== 
+*/
+.app-container{
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+.app-header{
+  font-family: 'Staatliches', cursive;
+  font-size: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container-margin-app{
+  margin-top: 5%;
+}
+/* 
+========= Application Component Ends ====== 
+*/
+
+/* 
+========= Home Component Starts ====== 
+*/
+
+.home-container{
+  background-image:url('img/vector-img.jpg');
+  background-position-y: 20%;
 }
 
-.App-link {
-  color: #09d3ac;
+.home-container2{
+  background-image:url('img/vector-img.jpg');
+  background-repeat: no-repeat;
+  background-position-y: 20%;
 }
+
+.home-container3{
+  background-image:url('img/vector-img.jpg');
+  background-repeat: no-repeat;
+  background-position-y: 100%;
+}
+/* 
+========= Home Component Ends ====== 
+*/
+
+
+
+/* 
+========= UseService Component Starts ====== 
+*/
+
+.open-file-container{
+  padding: 20px;
+  margin-left: 30%;
+}
+
+/* 
+========= UseService Component Ends ====== 
+*/
+
+
+/* 
+========= Runner Component Starts ====== 
+*/
+
+.run-header{
+  color: #33b5e5;
+  font-family: 'Roboto', sans-serif;
+  font-style: bold;
+  font-weight: 900;
+  font-size: 100px;
+  text-transform: uppercase;
+}
+
+.runner-container{
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.run-card-container{
+  padding: 20px;
+}
+.run-btn-container{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 
+========= Runner Component Ends ====== 
+*/
+
+/* 
+========= About Component Starts ====== 
+*/
+.about-container{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.f-header{
+  font-family: 'Staatliches', cursive;
+}
+.hr-features{
+  width: 20%;
+  border: solid 1px #2E2E2E;
+}
+/* 
+========= About Component Ends ====== 
+*/
+
+/* 
+========= Contact Component Starts ====== 
+*/
+
+.contact-container{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* 
+========= Contact Component Ends ====== 
+*/
+
+/* 
+========= Admin Component Starts ====== 
+*/
+
+.admin-container{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* 
+========= Admin Component Ends ====== 
+*/
