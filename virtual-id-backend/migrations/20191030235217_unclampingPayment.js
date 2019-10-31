@@ -5,13 +5,15 @@ exports.up = function(knex) {
       .timestamp("created_at")
       .notNull()
       .defaultTo(knex.raw("now()"));
-    table.string("filename").notNull();
+    table.string("licenseFile").notNull();
     table.string("plateNumber").notNull();
     table.number("latitude").notNull();
     table.number("longitude").notNull();
+    table.string("paymentId").notNull();
+    table.string("status").notNull();
   });
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable("users");
+  return knex.schema.dropTable("unclampingPayment");
 };

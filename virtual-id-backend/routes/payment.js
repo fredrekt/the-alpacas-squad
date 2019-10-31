@@ -16,18 +16,23 @@ const payments = io => {
     const longitude = req.body.longitude;
     const latitude = req.body.latitude;
     const plateNumber = req.body.plateNumber;
+    const paymentId = req.body.paymentId;
+    const status = req.body.status;
     const { filename } = req.file;
 
     const model = new UnclampingPayment({
-      fileName,
+      licenseFile: filename,
       plateNumber,
       latitude,
-      longitude
+      longitude,
+      paymentId,
+      status
     });
 
     // Broadcast to /eta/pending
 
-    return res.status(200).json({});
+
+    return res.status(201);
   });
 
   return router;
