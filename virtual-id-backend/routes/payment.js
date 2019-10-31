@@ -12,7 +12,7 @@ const upload = multer({ storage });
 const router = Router();
 
 const payments = io => {
-  router.post("/pay", upload.single("license"), (req, res, next) => {
+  router.post("/pay", upload.single("license"), async (req, res) => {
     const longitude = req.body.longitude;
     const latitude = req.body.latitude;
     const plateNumber = req.body.plateNumber;
@@ -30,13 +30,11 @@ const payments = io => {
       paymentStatus,
       unclampingStatus
     });
-    console.table(model);
 
-    /*
-    model
-      .save()
-      .then(model => io.emit("eta/running", ""))
-      .then(() => res.status(201).json({}));*/
+    await model.save().then(model => model);
+
+    io.emit("/eta/pending", "");
+
     res.status(201).json({});
   });
 

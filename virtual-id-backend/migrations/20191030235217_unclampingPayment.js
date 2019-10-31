@@ -7,8 +7,8 @@ exports.up = function(knex) {
       .defaultTo(knex.raw("now()"));
     table.string("licenseFile").notNull();
     table.string("plateNumber").notNull();
-    table.number("latitude").notNull();
-    table.number("longitude").notNull();
+    table.decimal("latitude").notNull();
+    table.decimal("longitude").notNull();
     table.string("paymentId").notNull();
     table.string("paymentStatus").notNull();
     table.string("unclampingStatus").notNull();
