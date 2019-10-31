@@ -29,13 +29,12 @@ const payments = io => {
       paymentId,
       paymentStatus: status,
       unclampingStatus
-    })
+    });
 
-    await model.save();
-
-    io.emit("/eta/running", "");
-
-    return res.status(201);
+    model
+      .save()
+      .then(model => io.emit("eta/running", ""))
+      .then(() => res.status(201).json({}));
   });
 
   return router;
